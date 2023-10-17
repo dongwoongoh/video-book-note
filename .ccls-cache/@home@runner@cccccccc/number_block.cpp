@@ -1,30 +1,30 @@
 #include <cmath>
+#include <iostream>
 #include <string>
 #include <vector>
-
 using namespace std;
 
 vector<int> solution(long long begin, long long end) {
   vector<int> answer;
+  answer.resize(end - begin + 1, 0);
 
-  for (long long i = begin; i <= end; i++) {
-    if (i == 1) {
-      answer.push_back(0);
-      continue;
-    }
-    long long n = 1;
-    for (long long j = 2; j <= sqrt(i); j++) {
+  for (int i = begin; i <= end; ++i) {
+    int num = 0;
+
+    for (int j = 2; j <= sqrt(i); ++j) {
+
       if (i % j == 0 && i / j <= 10000000) {
-        n = j;
+        answer[i - begin] = i / j;
         break;
       }
     }
-
-    if (n == 1) {
-      answer.push_back(1);
-    } else {
-      answer.push_back(i / n);
+    if (answer[i - begin] == 0) {
+      answer[i - begin] = 1;
     }
+  }
+
+  if (begin == 1) {
+    answer[0] = 0;
   }
 
   return answer;
