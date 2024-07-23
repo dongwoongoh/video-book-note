@@ -1,5 +1,5 @@
-#include  < string>
-#include  < vector>
+#include  <string>
+#include  <vector>
 
 using namespace std;
 int arr[100001];
